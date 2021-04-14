@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace CleanNugetPackage
+namespace Hopper.CleanNugetPackage
 {
     [Command(Description = "CleanNugetPackage")]
     public class Program
@@ -35,7 +35,6 @@ namespace CleanNugetPackage
             {
                 Console.WriteLine(packageNamePath);
 
-                List<int> directoriesVersion = new List<int>();
                 List<Version> versions = new List<Version>();
                 IEnumerable<string> packagesVersionPath = Directory.EnumerateDirectories(packageNamePath);
                 foreach (string packageVersionPath in packagesVersionPath)
