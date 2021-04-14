@@ -8,22 +8,25 @@
 # dotnet tools
 
 ## Hopper.CleanNugetPackage
+
 This tool helps you to remove old .nuget packages and reduce the disk space usage.
+
+## Install Hopper.CleanNugetPackage
+
+> dotnet tool install --global Hopper.CleanNugetPackage
+
+## Uninstall Hopper.CleanNugetPackage
+
+> dotnet tool uninstall -g Hopper.CleanNugetPackage
+
+### How it works
 
 Below there are some steps to understand how it works:
 
-> .\Hopper.CleanNugetPackage.exe microsoft.applicationinsights
+> hopperclean microsoft.applicationinsights
 
-> microsoft.entityframeworkcore.abstractions
+1. You can specify a part of directory name like above, and the tool will run to all paths that starts with the name of package you've specified.
 
-> dotnet run hopperclean xxx
+> hopperclean microsoft.entityframeworkcore.abstractions
 
-1. xxx.
-
-
-## Hopper.CleanNugetPackage
-> Install-Package Hopper.
-
-```
-
-````
+2. You can specify the full name, not just the initial part libe above.
