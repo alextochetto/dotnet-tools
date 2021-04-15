@@ -50,22 +50,41 @@ namespace Hopper.CleanNugetPackage
                     Version version = versionsMajorMinor.OrderByDescending(_ => _.Build).ThenByDescending(_ => _.MinorRevision).FirstOrDefault();
                     versions.Remove(version);
 
-                    Console.WriteLine($"Current path of major, minor, build and minor revision: {packageNamePath}\\{version.ToString()}");
+                    Console.WriteLine($"Current path of major, minor, build and minor revision: {packageNamePath}\\{version}");
                 }
 
                 foreach (Version versionToDelete in versions)
                 {
-                    string pathToDelete = $"{packageNamePath}\\{versionToDelete.Major}.{versionToDelete.Minor}.{versionToDelete.Build}.{versionToDelete.MinorRevision.ToString().PadLeft(4, '0')}";
-                    if (Directory.Exists(pathToDelete))
+                    string pathToDelete = string.Empty;
+                    if (versionToDelete.MinorRevision < 0)
                     {
-                        Directory.Delete(pathToDelete, recursive: true);
-
-                        Console.WriteLine($"Removed: {pathToDelete}");
+                        pathToDelete = $"{packageNamePath}\\{versionToDelete.Major}.{versionToDelete.Minor}.{versionToDelete.Build}";
+                        this.Delete(pathToDelete);
+                    }
+                    else
+                    {
+                        pathToDelete = $"{packageNamePath}\\{versionToDelete.Major}.{versionToDelete.Minor}.{versionToDelete.Build}.{versionToDelete.MinorRevision}";
+                        bool deleted = this.Delete(pathToDelete);
+                        if (deleted)
+                            continue;
+                        pathToDelete = $"{packageNamePath}\\{versionToDelete.Major}.{versionToDelete.Minor}.{versionToDelete.Build}.{versionToDelete.MinorRevision.ToString().PadLeft(4, '0')}";
+                        this.Delete(pathToDelete);
                     }
                 }
             }
-
             return 0;
+        }
+
+        private bool Delete(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Console.WriteLine($"Could not find this path: {path}");
+                return false;
+            }
+            Directory.Delete(path, recursive: true);
+            Console.WriteLine($"Removed: {path}");
+            return true;
         }
     }
 }
