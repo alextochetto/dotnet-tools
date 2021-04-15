@@ -1,4 +1,4 @@
-![Clean .nuget package]()
+[![tool hopperclean](https://github.com/alextochetto/dotnet-tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/alextochetto/dotnet-tools/actions/workflows/dotnet.yml)
 
 <p align="center">
   <img src="https://github.com/alextochetto/dotnet-tools/blob/main/src/Hopper.CleanNugetPackage/Images/icon.png?raw=true" width="150px" alt="SharpSenses" />
