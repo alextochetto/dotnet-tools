@@ -11,11 +11,11 @@
 
 This tool helps you to remove old .nuget packages and reduce the disk space usage.
 
-## Install Hopper.CleanNugetPackage
+### Install Hopper.CleanNugetPackage
 
 > dotnet tool install --global Hopper.CleanNugetPackage
 
-## Uninstall Hopper.CleanNugetPackage
+### Uninstall Hopper.CleanNugetPackage
 
 > dotnet tool uninstall -g Hopper.CleanNugetPackage
 
