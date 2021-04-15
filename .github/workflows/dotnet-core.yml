@@ -16,7 +16,7 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore .src/Hopper.CleanNugetPackage
+      run: dotnet restore ./src/Hopper.CleanNugetPackage
     - name: Build
       run: dotnet build --configuration Release ./src/Hopper.CleanNugetPackage
     - name: Pack
